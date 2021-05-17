@@ -1,0 +1,82 @@
+import torch
+import torch.nn       as nn
+from   torch.autograd import Variable
+import numpy          as np
+import os,cv2
+import random
+
+class DownNet(nn.Module):
+    def __init__(self, inCh, outChans, kSize, Stride, dropFlag):
+        super(DownNet, self).__init__()
+        self.down_conv  = nn.Conv2d(inCh, outChans, kSize, stride=Stride)
+        self.dropFlag   = dropFlag
+        self.BN2D       = nn.BatchNorm2d(outChans)
+        self.prelu      = nn.PReLU(outChans)
+        self.drop       = nn.Dropout2d()
+    def forward(self, x):
+        out = self.prelu(self.BN2D(self.down_conv(x)))
+        if self.dropFlag==True:
+           out = self.drop(out) 
+        return out
+    
+class UpNet(nn.Module):
+    def __init__(self, inCh, outChans, kSize, Stride, dropFlag, padding):
+        super(UpNet, self).__init__()
+        self.up_conv    = nn.ConvTranspose2d(inCh,outChans,kernel_size=kSize, stride=Stride)
+        self.dropFlag   = dropFlag
+        self.BN2D       = nn.BatchNorm2d(outChans)
+        self.prelu      = nn.PReLU(outChans)
+        self.drop       = nn.Dropout2d()
+    def forward(self, x):
+        out = self.prelu(self.BN2D(self.up_conv(x)))
+        if self.dropFlag==True:
+           out = self.drop(out) 
+        return out
+
+
+class Binarizer(nn.Module):
+    def __init__(self):
+        super(Binarizer, self).__init__()
+        self.conv = nn.Conv2d(512, 32, kernel_size=1, bias=False)
+        self.sign = Sign()
+
+    def forward(self, input):
+        feat = self.conv(input)
+        x = F.tanh(feat)
+        return self.sign(x)
+
+class Generator(nn.Module):
+    def __init__(self):
+        super(Generator, self).__init__()
+        self.dw1        = DownNet    (3,       32,   3  ,2,  False)
+        self.dw2        = DownNet    (32,      64,   3  ,2,  False)
+        self.dw3        = DownNet    (64,      128,  3  ,2,  False)
+        self.dw4        = DownNet    (128,     256,  3  ,2,  False)
+        self.dw5        = DownNet    (256,     512,  3  ,2,  False)
+        ###########################################################
+        self.up0        = UpNet      (512,     256,  3,  2,  False,  (0,0,0))  
+        self.up1        = UpNet      (256,     128,  3,  2,  False,  (0,0,0))  
+        self.up2        = UpNet      (128,     64,   3,  2,  False,  (0,0,0))
+        self.up3        = UpNet      (64,      32,   3,  2,  False,  (0,0,0)) 
+        self.up4        = UpNet      (32,      3,    3,  2,  False,  (0,0,0)) 
+        self._initialize_weights     (                            )
+     
+   
+    def _initialize_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+                if m.bias is not None:
+                    nn.init.constant_(m.bias, 0)
+            elif isinstance(m, nn.BatchNorm2d):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+            elif isinstance(m, nn.Linear):
+                nn.init.normal_(m.weight, 0, 0.01)
+                nn.init.constant_(m.bias, 0)
+   
+ 
+    def forward(self, x):
+        down =  self.dw5(self.dw4(self.dw3(self.dw2(self.dw1(x)))))
+        up   =  self.up4(self.up3(self.up2(self.up1(self.up0(down)))))
+        return up 
