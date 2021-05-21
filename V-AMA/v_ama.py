@@ -830,7 +830,7 @@ def TrainMUNIT(pathData,pathCode,pathModel,pathSave,n_worker,typedata,typemodel,
         for batch_idx, batch_train in tqdm(enumerate(data_loader,1),total=len(data_loader)):
 
             X1,\
-            X2 = batch_train
+            X2,_ = batch_train
 
             X1[X1 != X1] = 0
             X2[X2 != X2] = 0
@@ -1034,7 +1034,7 @@ def TrainCycleGAN(pathData,pathCode,pathModel,pathSave,n_worker,typedata,typemod
         
             ###############################
             a_real,\
-            b_real = batch_train
+            b_real,_ = batch_train
 
             a_real[a_real != a_real] = 0
             b_real[b_real != b_real] = 0
@@ -1243,7 +1243,7 @@ def TrainBicycleGAN(pathData,pathCode,pathModel,pathSave,n_worker,typedata,typem
             
             ###############################
             img,\
-            ground_truth = batch_train
+            ground_truth,_ = batch_train
             ###############################
             img[img != img] = 0
             ground_truth [ground_truth != ground_truth] = 0
