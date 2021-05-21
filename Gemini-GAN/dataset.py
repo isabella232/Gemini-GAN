@@ -29,7 +29,7 @@ class TrainDataset(data.Dataset):
 
     def __len__(self):
         return self.getdata.len_data()
-        #return 300
+
 
 class ValidDataset(data.Dataset):
     def __init__(self,pathData,pathCode,n_output):
