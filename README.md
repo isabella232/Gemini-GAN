@@ -1,13 +1,10 @@
 
-# Gemini-GAN
-
-> Joint Semi-supervised 3D Super-Resolution and Segmentation with Mixed Adversarial Gaussian Domain Adaptation
+# Joint Semi-supervised 3D Super-Resolution and Segmentation with Mixed Adversarial Gaussian Domain Adaptation
 
 ![](img/fig1.png)
 
 
- Optimising the analysis of cardiac geometry and motion requires accurate three-dimensional representations, however medical imaging applications are conventionally limited to acquiring contiguous cross-sections with low through-plane resolution and inherent spatial misalignment. Super-resolution is used in computer vision tasks to recover high-resolution images from low-resolution inputs but these are trained on transformations of the acquired images and are not optimised for segmentation tasks. Here we propose a semi-supervised algorithm that jointly estimates super-resolved cine greyscale images and their corresponding three-dimensional segmentation using natively high-resolution ground truth. This uses a multi-task supervised generative adversarial network (Gemini-GAN) for super-resolution and segmentation, and an unsupervised variational adversarial mixture autoencoder (V-AMA) for continuous domain adaptation. We evaluate this on three independent populations demonstrating that our Gemini-GAN shows a competitive Dice metric for high-resolution 3D segmentation of 0.87(0.05) in Endocardium End-Diastole (ED) vs 0.84(0.05), 0.85(0.05) and 0.82(0.05) (mean and std), performed with state-of-art UNet, SR-GAN, and SegSR-GAN. The grayscale super-resolution results, achieved jointly with high-resolution 3D segmentation, are still competitive where the PSNR in ED/ES is 26.93(0.59)/27.12(0.60) vs 23.66(0.37)/23.53(0.38) and 19.90(0.36)/20.10(0.29) respectively achieved with state-of-art super-resolution models SR-GAN, and SegSR-GAN. Our V-AMA model was also compared with three state-of-art generative domain adaptation models CycleGAN, BicycleGAN, and MUNIT showing the best domain adaption performances both in segmentation and super-resolution. This demonstrates how joint cardiac image super-resolution and segmentation, trained on near-isotropic ground-truth data, enables precision phenotyping across different domains.  
-
+Optimising the analysis of cardiac geometry and motion requires accurate threedimensional representations, however medical imaging applications are conventionally limited to acquiring contiguous cross-sections with low through-plane resolution and inherent spatial misalignment. Super-Resolution (SR) is used in computer vision tasks to recover SR images from LR inputs but these are trained on transformations of the acquired images and are not optimized for segmentation tasks. Here we propose a semi-supervised algorithm that jointly estimates super-resolved cine greyscale images and their corresponding three-dimensional segmentation using natively SR ground truth. This uses a multi-task generative adversarial network (Gemini-GAN) for SR and segmentation, and an unsupervised variational adversarial mixture autoencoder (V-AMA) for continuous domain adaptation. Our pipeline is extensively evaluated on three transnational multi-ethnic populations improving on the state-of-the-art for 3D segmentation accuracy with high peak signal-to-noise ratio and structural similarity index measures. Our V-AMA model also exceeded the performance of state-of-art generative domain adaptation models for both segmentation and SR. This demonstrates how joint cardiac image SR and segmentation, trained on 3D ground-truth data, enables precision phenotyping across domains.
 
 
 # Dependencies
@@ -119,7 +116,16 @@ Also, some models are been adapted from these repositries:
 * UNet: https://github.com/milesial/Pytorch-UNet
 * MUNIT, CycleGAN, and BicycleGAN: https://github.com/eriklindernoren/PyTorch-GAN
 
+## Citation
 
+Savioli N, de Marvao A, Bai W, Wang S, Cook SA, Chin CWL, Rueckert D, O’Regan DP. Joint Semi-supervised 3D Super-Resolution and Segmentation with Mixed Adversarial
+Gaussian Domain Adaptation. arXiv. 2021.
+
+## Datasets
+
+Paired low and high resolution cardiac labels maps. 
+
+Savioli N, O'Regan DP. Cardiac super-resolution label maps. Mendeley Data, V1, doi: 10.17632/pw87p286yx.1
 
 ## License
 
