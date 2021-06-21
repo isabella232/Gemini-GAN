@@ -125,7 +125,7 @@ Gaussian Domain Adaptation. arXiv. 2021.
 
 Paired low and high resolution cardiac labels maps. 
 
-Savioli N, O'Regan DP. Cardiac super-resolution label maps. Mendeley Data, V1, doi: [10.17632/pw87p286yx.1](https:/doi.org/10.17632/pw87p286yx.1)
+Savioli N, O'Regan DP. Cardiac super-resolution label maps. Mendeley Data, V1, doi: [10.17632/pw87p286yx.1](https://doi.org/10.17632/pw87p286yx.1)
 
 ## License
 
