@@ -48,7 +48,7 @@ The Mirtk installation (http://mirtk.github.io/getstarted.html) is only needed f
 The code is divided into three main folders: Gemini-GAN, V-AMA, and Tools. In the Gemini-GAN folder is the proposed main model and the comparative DL models. 
 In the V-AMA folder is the main V-AMA model with the comparison models. Finally, in Tools folder, is general support code for this project.
 
-##  Gemini-GAN Folder
+##  [Gemini-GAN Folder](https://github.com/ImperialCollegeLondon/Gemini-GAN/tree/master/Gemini-GAN)
 
 In the Gemini-GAN folder, we can also find three python files: Gemini-GAN.py, seg_SRGAN.py, and UNet.py. Before running the code please make sure to set the paths as described internally in each file. Then, please run the traning with the following command:
 
@@ -58,9 +58,9 @@ python Gemini-GAN.py
 
 In the subdirectory test, there are two main python files: Classic_test.py and DL_test.py. 
 
-* With Classic_test.py you can easily test the classic super-resolution methods such as Linear/NN/BSpline
+* With `Classic_test.py` you can easily test the classic super-resolution methods such as Linear/NN/BSpline
 
-* With DL_test.py you can test the deep learning method (previously trained). Please remember to set all paths in each code before starting. 
+* With `DL_test.py` you can test the deep learning method (previously trained). Please remember to set all paths in each code before starting. 
 
 Then, start the test with the following command:
 
@@ -79,16 +79,16 @@ python DL_test.py
 *Joint Super-Resolution and 3D Segmentation prediction*
 
 
-##  V-AMA Folder
+##  [V-AMA Folder](https://github.com/ImperialCollegeLondon/Gemini-GAN/tree/master/V-AMA)
 
-In the V-AMA folder you can also find the python file v_ama.py which, in addition to containing the code of the proposed V-AMA model, contains the comparative methods MUNIT, CycleGAN, and BicycleGAN.  
+In the V-AMA folder you can also find the python file `v_ama.py` which, in addition to containing the code of the proposed V-AMA model, contains the comparative methods MUNIT, CycleGAN, and BicycleGAN.  
 Before running the code make sure to set the paths as described in the file. After setting the paths please run the training with the following command:
 
 ```
 python v_ama.py
 ```
 
-In the subdirectory test there is the python test file called test.py. Then, after setting the paths you can start the test with the following command:
+In the subdirectory test there is the python test file called `test.py`. Then, after setting the paths you can start the test with the following command:
 
 ```
 cd test
@@ -99,12 +99,12 @@ Finally, the subdirectory alignment block is used for spatial alignment between 
 
 ![](img/fig2.png)
 
-##  Tools Folder
+##  [Tools Folder](https://github.com/ImperialCollegeLondon/Gemini-GAN/tree/master/Tools)
 
 The tools folder is organized in a subdirectory as follows:
 
-* ./4DCine folder contains the code for creating the 4D Cine for both super-resolution and 3D Segmentation.
-* ./dataset folder contains the code used for supporting the dataset creation (i.e., train, validate, test).
+* [./4DCine](https://github.com/ImperialCollegeLondon/Gemini-GAN/tree/master/Tools/4DCine) folder contains the code for creating the 4D Cine for both super-resolution and 3D Segmentation.
+* [./dataset](https://github.com/ImperialCollegeLondon/Gemini-GAN/tree/master/Tools/Dataset) folder contains the code used for supporting the dataset creation (i.e., train, validate, test).
 
 
 ## Acknowledgments
@@ -125,7 +125,7 @@ Gaussian Domain Adaptation. arXiv. 2021.
 
 Paired low and high resolution cardiac labels maps. 
 
-Savioli N, O'Regan DP. Cardiac super-resolution label maps. Mendeley Data, V1, doi: 10.17632/pw87p286yx.1
+Savioli N, O'Regan DP. Cardiac super-resolution label maps. Mendeley Data, V1, doi: [10.17632/pw87p286yx.1](https:/doi.org/10.17632/pw87p286yx.1)
 
 ## License
 
