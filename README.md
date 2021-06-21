@@ -1,6 +1,8 @@
 
 # Joint Semi-supervised 3D Super-Resolution and Segmentation with Mixed Adversarial Gaussian Domain Adaptation
 
+[![DOI](https://zenodo.org/badge/368199248.svg)](https://zenodo.org/badge/latestdoi/368199248)
+
 ![](img/fig1.png)
 
 
