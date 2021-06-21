@@ -41,7 +41,7 @@ pip install nibabel
 pip install pickle5
 ```
 
-The Mirtk installation (http://mirtk.github.io/getstarted.html) is only needed for testing the classic super-risolution methods (I.e, Linear/NN/BSpline) and for the alignment block in the V-AMA code.
+The Mirtk installation (http://mirtk.github.io/getstarted.html) is only needed for testing the classic super-resolution methods (i.e., Linear/NN/BSpline) and for the alignment block in the V-AMA code.
 
 # Code
 
